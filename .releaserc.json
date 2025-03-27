@@ -1,0 +1,47 @@
+{
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        [
+            "@semantic-release/changelog",
+            {
+                "changelogFile": "HISTORY.md"
+            }
+        ],
+        [
+            "@semantic-release/exec",
+            {
+                "prepareCmd": "./updateVersion.sh ${nextRelease.version} && php create-phar.php"
+            }
+        ],
+        [
+            "@semantic-release/git",
+            {
+                "assets": [
+                    "HISTORY.md",
+                    "@(package|composer).json",
+                    "build",
+                    "report",
+                    "src/APIClient.php",
+                    "php-sdk-latest.phar",
+                    "php-sdk-latest.phar.gz"
+                ]
+            }
+        ],
+        [
+            "@semantic-release/github",
+            {
+                "assets": [
+                    {
+                        "label": "PHP-SDK (phar)",
+                        "path": "php-sdk.phar"
+                    },
+                    {
+                        "label": "PHP-SDK (phar.gz)",
+                        "path": "php-sdk.phar.gz"
+                    }
+                ]
+            }
+        ]
+    ]
+}
