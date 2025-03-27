@@ -1,5 +1,5 @@
 {
-	"name": "hexonet/php-sdk",
+	"name": "upmind/hexonet-php-sdk",
 	"type": "library",
 	"description": "API connector library for the insanely fast HEXONET backend API",
 	"keywords": [
